@@ -85,7 +85,7 @@ function Footer() {
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-300 text-sm">
-              © 2024 IntelliDoc. All rights reserved.
+              © {new Date().getFullYear()} IntelliDoc. All rights reserved.
             </p>
             <div className="flex items-center space-x-2 text-gray-300 text-sm mt-4 md:mt-0">
               <span>Made with</span>

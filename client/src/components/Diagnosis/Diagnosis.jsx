@@ -206,7 +206,7 @@ function Diagnosis() {
         </div>
 
         {/* CTA Section */}
-        <Card className="bg-gradient-to-r from-primary to-blue-600 text-white">
+        {/* <Card className="bg-gradient-to-r from-primary to-blue-600 text-white">
           <CardContent className="p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">Need Help Choosing?</h3>
             <p className="text-primary-foreground/90 mb-6 max-w-2xl mx-auto">
@@ -217,7 +217,7 @@ function Diagnosis() {
               <Link to="/medibuddy">Chat with MediBuddy</Link>
             </Button>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );
