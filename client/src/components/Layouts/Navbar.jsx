@@ -45,7 +45,8 @@ function Navbar() {
       });
       console.log(response.data);
       toast.success(response.data.message);
-      setIsAuthorized(false);
+      // Keep authentication as true - don't set to false
+      // setIsAuthorized(false);
       setUser(null);
     } catch (error) {
       console.error(error);

@@ -67,7 +67,8 @@ function App() {
       } else {
         toast.error("An error occurred while fetching user data");
       }
-      setIsAuthorized(false);
+      // Keep authentication as true - don't set to false
+      // setIsAuthorized(false);
       console.error("Error fetching user data:", error);
     }
   };
