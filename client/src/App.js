@@ -24,7 +24,6 @@ import SkinDiseaseForm from "./components/Form/Image-Part/Skin_Disease.jsx";
 import Home from "./components/Home/Home";
 import Footer from "./components/Layouts/Footer";
 import Navbar from "./components/Layouts/Navbar";
-import Medibuddy from "./components/MediBuddy/Main/Medibuddy.jsx";
 import NotFound from "./components/NotFound/NotFound";
 import RecommendationPage from "./components/RecommendationPage/RecommendPage.jsx";
 import BloodTestResults from "./components/Results/BloodTestResults.jsx";
@@ -38,6 +37,7 @@ import SkinDiseaseResult from "./components/Results/Img-result/SkinDiseaseResult
 import KidneyStoneResults from "./components/Results/KidneyStoneResults.jsx";
 import LiverDiseaseResult from "./components/Results/LiverDiseaseResult.jsx";
 import ErrorBoundary from "./components/ui/error-boundary.jsx";
+import FloatingChatWrapper from "./components/ui/FloatingChatWrapper.jsx";
 function App() {
   const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
 
@@ -138,13 +138,13 @@ function App() {
                 path="/skin-disease-results/:id"
                 element={<SkinDiseaseResult />}
               />
-              <Route path="/medibuddy" element={<Medibuddy />} />
               <Route path="/medicines" element={<RecommendationPage />} />
               <Route path="/user-profile" element={<UserProfile />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
+          <FloatingChatWrapper />
           <Toaster
             position="top-right"
             toastOptions={{

@@ -3,7 +3,6 @@ import {
   FileText,
   Home,
   LogOut,
-  MessageSquare,
   Pill,
   Settings,
   Stethoscope,
@@ -33,12 +32,6 @@ function Sidebar() {
       label: "Medicines",
       href: "/medicines",
       active: location.pathname === "/medicines",
-    },
-    {
-      icon: MessageSquare,
-      label: "MediBuddy",
-      href: "/medibuddy",
-      active: location.pathname === "/medibuddy",
     },
     {
       icon: FileText,
