@@ -55,7 +55,18 @@ function App() {
       setIsAuthorized(true);
       toast.success(response.data.message);
     } catch (error) {
-      toast.success(error.response.data.message);
+      // Handle different types of errors safely
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.error(error.response.data.message);
+      } else if (error.message) {
+        toast.error(error.message);
+      } else {
+        toast.error("An error occurred while fetching user data");
+      }
       setIsAuthorized(false);
       console.error("Error fetching user data:", error);
     }

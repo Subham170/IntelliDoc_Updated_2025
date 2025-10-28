@@ -32,7 +32,7 @@ function Navbar() {
   ];
 
   let username;
-  if (isAuthorized) {
+  if (isAuthorized && user && user.name) {
     username = user.name[0].toUpperCase();
   }
 
@@ -48,8 +48,16 @@ function Navbar() {
       setIsAuthorized(false);
       setUser(null);
     } catch (error) {
-      console.error(error.response.data);
-      toast.error(error.response.data.message);
+      console.error(error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Logout failed. Please try again.");
+      }
     }
   };
 

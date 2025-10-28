@@ -64,8 +64,16 @@ function Login() {
       toast.success(response.data.message);
       navigateTo("/");
     } catch (error) {
-      console.error(error.response.data);
-      toast.error(error.response.data.message);
+      console.error(error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Registration failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -87,8 +95,16 @@ function Login() {
       toast.success(response.data.message);
       navigateTo("/");
     } catch (error) {
-      console.error(error.response.data);
-      toast.error(error.response.message);
+      console.error(error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Login failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }

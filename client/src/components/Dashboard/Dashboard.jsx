@@ -154,11 +154,11 @@ const UserProfile = () => {
                   {/* User Info */}
                   <div className="flex-1">
                     <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                      {user.name}
+                      {user?.name || "User"}
                     </h2>
                     <div className="flex items-center space-x-2 text-gray-600 mb-4">
                       <Mail className="w-4 h-4" />
-                      <span>{user.email}</span>
+                      <span>{user?.email || "No email"}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-green-600">
                       <CheckCircle className="w-4 h-4" />
