@@ -8,17 +8,19 @@ import {
   Shield,
   Stethoscope,
   TrendingUp,
+  Users,
 } from "lucide-react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
+import { useFloatingChat } from "../ui/FloatingChatContext";
 import { Input } from "../ui/input";
 import CardList from "./CardList.js";
 import { tests } from "./Tests.js";
 
 function Diagnosis() {
   const [searchfield, setSearchfield] = useState("");
+  const { openChat } = useFloatingChat();
 
   const onSearchChange = (e) => {
     setSearchfield(e.target.value);
@@ -66,6 +68,19 @@ function Diagnosis() {
             from our comprehensive range of diagnostic tests and get instant
             results.
           </p>
+
+          {/* Try MediBuddy Button */}
+          <div className="mb-8">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={openChat}
+              className="inline-flex items-center px-6 py-3"
+            >
+              <Users className="w-5 h-5 mr-2" />
+              Try MediBuddy
+            </Button>
+          </div>
 
           {/* Search Box */}
           <div className="max-w-2xl mx-auto mb-8">

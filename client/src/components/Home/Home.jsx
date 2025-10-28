@@ -18,8 +18,11 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { useFloatingChat } from "../ui/FloatingChatContext";
 
 function Home() {
+  const { openChat } = useFloatingChat();
+
   const features = [
     {
       icon: Brain,
@@ -105,11 +108,16 @@ function Home() {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-                <Link to="/medibuddy" className="flex items-center">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-6"
+                onClick={openChat}
+              >
+                <div className="flex items-center">
                   Try MediBuddy
                   <Users className="ml-2 w-5 h-5" />
-                </Link>
+                </div>
               </Button>
             </div>
           </div>

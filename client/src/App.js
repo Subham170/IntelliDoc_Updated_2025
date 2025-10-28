@@ -37,6 +37,7 @@ import SkinDiseaseResult from "./components/Results/Img-result/SkinDiseaseResult
 import KidneyStoneResults from "./components/Results/KidneyStoneResults.jsx";
 import LiverDiseaseResult from "./components/Results/LiverDiseaseResult.jsx";
 import ErrorBoundary from "./components/ui/error-boundary.jsx";
+import { FloatingChatProvider } from "./components/ui/FloatingChatContext.jsx";
 import FloatingChatWrapper from "./components/ui/FloatingChatWrapper.jsx";
 function App() {
   const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
@@ -80,86 +81,88 @@ function App() {
   console.log("auth->", isAuthorized);
   console.log("user->", user);
   return (
-    <ErrorBoundary>
-      <Router>
-        <div className="min-h-screen bg-background">
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Register />} />
-              <Route path="/forgotPassword" element={<ForgotPassword />} />
-              <Route path="/changePassword" element={<ChangePassword />} />
-              <Route path="/diagnosis" element={<Diagnosis />} />
-              <Route path="/diabetes" element={<DiabetesForm />} />
-              <Route path="/heart-disease" element={<HeartDiseaseForm />} />
-              <Route path="/cataract" element={<CataractForm />} />
-              <Route path="/cardioDisease" element={<Cardio_disease />} />
-              <Route path="/liverDisease" element={<Liver_Disease />} />
-              <Route path="/bloodTest" element={<Blood_Test />} />
-              <Route path="/kidneyStone" element={<Kidney_Stone />} />
-              <Route path="/skin-disease" element={<SkinDiseaseForm />} />
-              <Route path="/ct-scan" element={<Ct_scan_form />} />
-              <Route
-                path="/diabetic-retinopathy"
-                element={<DiabeticRetinopathyForm />}
-              />
-              <Route path="/bloodtest/:id" element={<BloodTestResults />} />
-              <Route
-                path="/heart-disease-results/:id"
-                element={<HeartDiseaseResults />}
-              />
-              <Route
-                path="/cardio-disease-results/:id"
-                element={<Cardio_disease_Results />}
-              />
-              <Route
-                path="/diabetes-results/:id"
-                element={<DiabetesResults />}
-              />
-              <Route
-                path="/kidney-stone-results/:id"
-                element={<KidneyStoneResults />}
-              />
-              <Route
-                path="/liver-disease-results/:id"
-                element={<LiverDiseaseResult />}
-              />
-              <Route
-                path="/cataract-results/:id"
-                element={<CataractResult />}
-              />
-              <Route path="/ct-scan-results/:id" element={<CTScanResult />} />
-              <Route
-                path="/diabetic-retinopathy-results/:id"
-                element={<DiabeticRetinopathyResult />}
-              />
-              <Route
-                path="/skin-disease-results/:id"
-                element={<SkinDiseaseResult />}
-              />
-              <Route path="/medicines" element={<RecommendationPage />} />
-              <Route path="/user-profile" element={<UserProfile />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-          <FloatingChatWrapper />
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: "hsl(var(--card))",
-                color: "hsl(var(--card-foreground))",
-                border: "1px solid hsl(var(--border))",
-              },
-            }}
-          />
-        </div>
-      </Router>
-    </ErrorBoundary>
+    <FloatingChatProvider>
+      <ErrorBoundary>
+        <Router>
+          <div className="min-h-screen bg-background">
+            <Navbar />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Register />} />
+                <Route path="/forgotPassword" element={<ForgotPassword />} />
+                <Route path="/changePassword" element={<ChangePassword />} />
+                <Route path="/diagnosis" element={<Diagnosis />} />
+                <Route path="/diabetes" element={<DiabetesForm />} />
+                <Route path="/heart-disease" element={<HeartDiseaseForm />} />
+                <Route path="/cataract" element={<CataractForm />} />
+                <Route path="/cardioDisease" element={<Cardio_disease />} />
+                <Route path="/liverDisease" element={<Liver_Disease />} />
+                <Route path="/bloodTest" element={<Blood_Test />} />
+                <Route path="/kidneyStone" element={<Kidney_Stone />} />
+                <Route path="/skin-disease" element={<SkinDiseaseForm />} />
+                <Route path="/ct-scan" element={<Ct_scan_form />} />
+                <Route
+                  path="/diabetic-retinopathy"
+                  element={<DiabeticRetinopathyForm />}
+                />
+                <Route path="/bloodtest/:id" element={<BloodTestResults />} />
+                <Route
+                  path="/heart-disease-results/:id"
+                  element={<HeartDiseaseResults />}
+                />
+                <Route
+                  path="/cardio-disease-results/:id"
+                  element={<Cardio_disease_Results />}
+                />
+                <Route
+                  path="/diabetes-results/:id"
+                  element={<DiabetesResults />}
+                />
+                <Route
+                  path="/kidney-stone-results/:id"
+                  element={<KidneyStoneResults />}
+                />
+                <Route
+                  path="/liver-disease-results/:id"
+                  element={<LiverDiseaseResult />}
+                />
+                <Route
+                  path="/cataract-results/:id"
+                  element={<CataractResult />}
+                />
+                <Route path="/ct-scan-results/:id" element={<CTScanResult />} />
+                <Route
+                  path="/diabetic-retinopathy-results/:id"
+                  element={<DiabeticRetinopathyResult />}
+                />
+                <Route
+                  path="/skin-disease-results/:id"
+                  element={<SkinDiseaseResult />}
+                />
+                <Route path="/medicines" element={<RecommendationPage />} />
+                <Route path="/user-profile" element={<UserProfile />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+            <FloatingChatWrapper />
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: "hsl(var(--card))",
+                  color: "hsl(var(--card-foreground))",
+                  border: "1px solid hsl(var(--border))",
+                },
+              }}
+            />
+          </div>
+        </Router>
+      </ErrorBoundary>
+    </FloatingChatProvider>
   );
 }
 

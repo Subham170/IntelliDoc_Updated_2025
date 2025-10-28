@@ -1,11 +1,20 @@
 import { Mic, Minimize2, Send, X } from "lucide-react";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import medilogo from "../../assests/MediBuddy.jpg";
 import { Context } from "../../components/MediBuddy/Main/context/context";
+import { useFloatingChat } from "./FloatingChatContext";
 
 const FloatingChat = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const {
+    isOpen,
+    isMinimized,
+    toggleChat,
+    minimizeChat,
+    expandChat,
+    shouldClearState,
+    setShouldClearState,
+    closeChat,
+  } = useFloatingChat();
   const [hasNewMessage, setHasNewMessage] = useState(false);
   const {
     onSent,
@@ -15,7 +24,16 @@ const FloatingChat = () => {
     resultData,
     setInput,
     input,
+    newChat,
   } = useContext(Context);
+
+  // Clear chat state when chat is closed
+  useEffect(() => {
+    if (shouldClearState) {
+      newChat(); // Clear the MediBuddy chat state
+      setShouldClearState(false); // Reset the flag
+    }
+  }, [shouldClearState, newChat, setShouldClearState]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -23,22 +41,11 @@ const FloatingChat = () => {
     }
   };
 
-  const toggleChat = () => {
-    setIsOpen(!isOpen);
-    if (isOpen) {
-      setIsMinimized(false);
-    }
+  const handleToggleChat = () => {
+    toggleChat();
     if (!isOpen) {
       setHasNewMessage(false);
     }
-  };
-
-  const minimizeChat = () => {
-    setIsMinimized(true);
-  };
-
-  const expandChat = () => {
-    setIsMinimized(false);
   };
 
   return (
@@ -56,7 +63,7 @@ const FloatingChat = () => {
 
           {/* Main floating button */}
           <button
-            onClick={toggleChat}
+            onClick={handleToggleChat}
             className="w-14 h-14 bg-blue-600 hover:bg-blue-700 rounded-full shadow-xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110 overflow-hidden"
           >
             <img
@@ -99,7 +106,7 @@ const FloatingChat = () => {
                   </button>
                 )}
                 <button
-                  onClick={toggleChat}
+                  onClick={closeChat}
                   className="text-white hover:text-blue-200 transition-colors"
                 >
                   <X className="w-4 h-4" />

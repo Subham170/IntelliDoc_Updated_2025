@@ -1,5 +1,6 @@
-import { FileImage, Upload, X } from "lucide-react";
+import { FileImage, Upload, Users, X } from "lucide-react";
 import React from "react";
+import { useFloatingChat } from "./FloatingChatContext";
 
 const FileUpload = ({
   title,
@@ -12,6 +13,8 @@ const FileUpload = ({
   className = "",
   showPreview = true,
 }) => {
+  const { openChat } = useFloatingChat();
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     onFileChange(file);
@@ -33,7 +36,14 @@ const FileUpload = ({
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">{title}</h1>
+          <button
+            onClick={openChat}
+            className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+          >
+            <Users className="w-4 h-4 mr-2" />
+            Try MediBuddy
+          </button>
         </div>
 
         {/* Upload Card */}
